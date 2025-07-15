@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - UpSkillr</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background-image: url('image/pic3.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: rgba(0, 0, 50, 0.6);
+      backdrop-filter: blur(8px);
+      color: #0077b6;
+      text-align: center;
+      padding: 20px;
+    }
+
+    nav a {
+      color: #0077b6;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .card h3 {
+      font-size: 22px;
+      color: #0077b6;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #111;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      color: #fff;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #ccc;
+    }
+
+    footer {
+      background-color: #111010;
+      color: white;
+      padding: 2rem 4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 4rem;
+    }
+
+    .footer-title {
+      font-size: 1.25rem;
+      color: white;
+      border-left: 4px solid #2d4bf0;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .footer ul li {
+      margin: 0.5rem 0;
+    }
+
+    .footer ul li a {
+      color: #d4d4d4;
+      text-decoration: none;
+    }
+
+    .footer ul li a:hover {
+      color: white;
+    }
+
+    .g-inp {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 14px;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      background-color: #222;
+      color: white;
+      border: 1px solid #444;
+    }
+
+    .f-btn {
+      padding: 0.5rem 1rem;
+      background-color: #2d4bf0;
+      border-radius: 4px;
+      font-size: 14px;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .f-btn:hover {
+      background-color: #1b32a5;
+    }
+
+    .copyright {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    @media screen and (max-width: 768px) {
+      footer {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>About Our Courses</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="register.html">Register</a>
+      <a href="about.html">About</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <p>Click on any course below to learn more about what we offer.</p>
+    <div class="grid">
+      <div class="card" onclick="openModal('Web Development', 'Learn to build dynamic websites using HTML, CSS, and JavaScript.', '✓ Frontend & Backend Basics\n✓ Real Projects\n✓ Hosting Skills', '₹ 2999')">
+        <h3>Web Development</h3>
+      </div>
+      <div class="card" onclick="openModal('Data Science', 'Master data analysis, machine learning, and visualization.', '✓ Python & Pandas\n✓ ML Models\n✓ Data Viz', '₹ 3499')">
+        <h3>Data Science</h3>
+      </div>
+      <div class="card" onclick="openModal('Cybersecurity', 'Learn how to protect systems and networks from attacks.', '✓ Ethical Hacking\n✓ Network Security\n✓ Threat Detection', '₹ 3199')">
+        <h3>Cybersecurity</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="courseModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p><strong>Description:</strong> <span id="modalDescription"></span></p>
+      <p><strong>Learning Outcomes:</strong></p>
+      <pre id="modalOutcomes" style="color: #00ffc8; font-size: 15px;"></pre>
+      <p><strong>Price:</strong> <span id="modalPrice" style="color: #00ffc8;"></span></p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div>
+      <div class="footer-title">Need Help?</div>
+      <form action="/" method="post">
+        <input type="text" name="name" class="g-inp" placeholder="Your Name" />
+        <input type="email" name="email" class="g-inp" placeholder="Your Email" />
+        <textarea name="message" class="g-inp" placeholder="Message..." rows="4"></textarea>
+        <button type="submit" class="f-btn">Send</button>
+      </form>
+    </div>
+
+    <div>
+      <div class="footer-title">Get In Touch</div>
+      <ul>
+        <li>📧 <a href="mailto:divya.pawar001515@gmail.com">Gmail</a></li>
+        <li>📞 <a href="tel:+918888888888">+91 88888 88888</a></li>
+        <li>🔗 <a href="https://www.linkedin.com/in/divya-pawar" target="_blank">LinkedIn</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-title">Shortcut Links</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+      </ul>
+    </div>
+
+    <div class="copyright">
+      &copy; 2025 Divya Pawar | Made with ❤️
+    </div>
+  </footer>
+
+  <script>
+    function openModal(title, description, outcomes, price) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDescription').textContent = description;
+      document.getElementById('modalOutcomes').textContent = outcomes;
+      document.getElementById('modalPrice').textContent = price;
+      document.getElementById('courseModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('courseModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Course Registration</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: url('image/pic3.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: #00aaff;
+      font-size: 24px;
+    }
+
+    nav a {
+      color: #eee;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      color: #00aaff;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background-color: #111111;
+      border-radius: 20px;
+      padding: 30px 40px;
+      box-shadow: 0 0 20px rgba(0, 115, 255, 0.3);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    h2 {
+      color: #00aaff;
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+
+    label {
+      color: #ddd;
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #222222;
+      color: #eee;
+      font-size: 15px;
+    }
+
+    input::placeholder {
+      color: #888;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background-color: #00aaff;
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0090dd;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 20px;
+      }
+      nav a {
+        margin: 0 8px;
+        font-size: 14px;
+      }
+      .container {
+        padding: 25px 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔷 HEADER -->
+  <header>
+    <h1>Course Portal</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <!-- 🔷 CENTERED FORM SECTION -->
+  <div class="main">
+    <div class="container">
+      <h2>Course Registration</h2>
+      <form action="success.html" method="POST">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="course">Choose Course</label>
+        <select id="course" name="course" required>
+          <option value="">-- Select a Course --</option>
+          <option value="Web Development">Web Development</option>
+          <option value="Cybersecurity">Cybersecurity</option>
+          <option value="Data Science">Data Science</option>
+        </select>
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

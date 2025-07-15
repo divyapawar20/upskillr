@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Course Registration</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: url('image/pic3.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: #00aaff;
+      font-size: 24px;
+    }
+
+    nav a {
+      color: #eee;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      color: #00aaff;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .container {
+      background-color: #111111;
+      border-radius: 20px;
+      padding: 30px 40px;
+      box-shadow: 0 0 20px rgba(0, 115, 255, 0.3);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    h2 {
+      color: #00aaff;
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+
+    label {
+      color: #ddd;
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #222222;
+      color: #eee;
+      font-size: 15px;
+    }
+
+    input::placeholder {
+      color: #888;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background-color: #00aaff;
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0090dd;
+    }
+
+    footer {
+      background-color: #111010;
+      color: white;
+      padding: 2rem 4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 4rem;
+    }
+
+    .footer-title {
+      font-size: 1.25rem;
+      color: white;
+      border-left: 4px solid #2d4bf0;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .footer ul li {
+      margin: 0.5rem 0;
+    }
+
+    .footer ul li a {
+      color: #d4d4d4;
+      text-decoration: none;
+    }
+
+    .footer ul li a:hover {
+      color: white;
+    }
+
+    .g-inp {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 14px;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      background-color: #222;
+      color: white;
+      border: 1px solid #444;
+    }
+
+    .f-btn {
+      padding: 0.5rem 1rem;
+      background-color: #2d4bf0;
+      border-radius: 4px;
+      font-size: 14px;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .f-btn:hover {
+      background-color: #1b32a5;
+    }
+
+    .copyright {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 20px;
+      }
+      nav a {
+        margin: 0 8px;
+        font-size: 14px;
+      }
+      .container {
+        padding: 25px 30px;
+      }
+      footer {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔷 HEADER -->
+  <header>
+    <h1>UpSkillr</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <!-- 🔷 CENTERED FORM SECTION -->
+  <div class="main">
+    <div class="container">
+      <h2>Course Registration</h2>
+      <form action="/api/students/register" method="POST">
+
+
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="course">Choose Course</label>
+        <select id="course" name="course" required>
+          <option value="">-- Select a Course --</option>
+          <option value="Web Development">Web Development</option>
+          <option value="Cybersecurity">Cybersecurity</option>
+          <option value="Data Science">Data Science</option>
+        </select>
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 🔷 FOOTER -->
+  <footer class="footer">
+    <div>
+      <div class="footer-title">Need Help?</div>
+      <form action="/" method="post">
+        <input type="text" name="name" class="g-inp" placeholder="Your Name" />
+        <input type="email" name="email" class="g-inp" placeholder="Your Email" />
+        <textarea name="message" class="g-inp" placeholder="Message..." rows="4"></textarea>
+        <button type="submit" class="f-btn">Send</button>
+      </form>
+    </div>
+
+    <div>
+      <div class="footer-title">Get In Touch</div>
+      <ul>
+        <li>📧 <a href="mailto:divya.pawar001515@gmail.com">Gmail</a></li>
+        <li>📞 <a href="tel:+918888888888">+91 88888 88888</a></li>
+        <li>🔗 <a href="https://www.linkedin.com/in/divya-pawar" target="_blank">LinkedIn</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-title">Shortcut Links</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+      </ul>
+    </div>
+
+    <div class="copyright">
+      &copy; 2025 Divya Pawar | Made with ❤️
+    </div>
+  </footer>
+
+</body>
+</html>
