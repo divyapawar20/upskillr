@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registration Success</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: url('image/pic3.jpg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+
+    .success-box {
+      position: relative;
+      z-index: 1;
+      max-width: 500px;
+      background-color: #0e0e0e;
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #00aaff;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #ddd;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background-color: #00aaff;
+      color: #000;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background-color: #0090dd;
+    }
+
+    @media (max-width: 600px) {
+      .success-box {
+        margin: 0 20px;
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="success-box">
+    <h1>🎉 Registration Successful!</h1>
+    <p><strong>Name:</strong> <span id="name">Loading...</span></p>
+    <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+    <p><strong>Course:</strong> <span id="course">Loading...</span></p>
+
+    <a class="btn" href="/dashboard.html">Go to Dashboard</a>
+  </div>
+
+  <script>
+    // Read query parameters and set them in the HTML
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("name").textContent = params.get("name") || "N/A";
+    document.getElementById("email").textContent = params.get("email") || "N/A";
+    document.getElementById("course").textContent = params.get("course") || "N/A";
+  </script>
+</body>
+</html>

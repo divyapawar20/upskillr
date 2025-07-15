@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard – Progress</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto',sans-serif; }
+    body {
+      background:url('image/pic3.jpg') center/cover no-repeat fixed;
+      color:#fff;
+      min-height:100vh;
+      display:flex; flex-direction:column;
+    }
+    header, footer {
+      backdrop-filter:blur(6px); background:rgba(0,0,0,0.6);
+      padding:20px 40px; display:flex; align-items:center; justify-content:space-between;
+      color:#00cfff;
+    }
+    nav a { color:#00cfff; margin:0 15px; text-decoration:none; font-weight:500; }
+    nav a:hover { color:#fff; }
+    .dashboard-title {
+      text-align:center; font-size:32px; margin:20px 0; color:#00ffc8;
+    }
+    .container {
+      flex:1; padding:20px; max-width:1000px; margin:0 auto;
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:30px;
+    }
+    .card {
+      background:rgba(0,0,0,0.5); border-radius:10px; padding:20px;
+      text-align:center; cursor:pointer; transition:transform 0.3s;
+    }
+    .card:hover { transform:translateY(-5px); }
+    .circle {
+      width:100px; height:100px; margin:0 auto 10px;
+      border-radius:50%; background:conic-gradient(#112b45 var(--pct), #444 0);
+      display:flex; align-items:center; justify-content:center;
+      font-size:20px; font-weight:bold;
+    }
+    .card h3 { margin-bottom:10px; color:#aadfff; }
+    .btn {
+      display:inline-block; margin-top:10px; padding:8px 16px;
+      border:2px solid #00cfff; color:#518594; border-radius:6px;
+      text-decoration:none; transition:background 0.3s;
+    }
+    .btn:hover { background:#00cfff; color:#000; }
+
+    /* Modal */
+    .modal {
+      display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8);
+      align-items:center; justify-content:center; backdrop-filter:blur(5px);
+    }
+    .modal-content {
+      background:#111; padding:30px; border-radius:10px;
+      width:90%; max-width:500px; color:#fff; position:relative;
+    }
+    .close { position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; color:#ccc; }
+    .modal-content h2 { color:#16617a; margin-bottom:15px; }
+    .modal-content ul { margin:15px 0; padding-left:20px; }
+    .modal-content p { margin:8px 0; }
+    .modal-content p.price { font-size:18px; color:#aadfff; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Course Progress</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="register.html">Register</a>
+      <a href="about.html">About</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <div class="dashboard-title">Welcome, Divya!</div>
+
+  <div class="container">
+    <div class="card" onclick="openModal('Web Development', 8, 10)">
+      <div class="circle" style="--pct:80%;">80%</div>
+      <h3>Web Development</h3>
+      <a class="btn">View Details</a>
+    </div>
+
+    <div class="card" onclick="openModal('Data Science', 6, 10)">
+      <div class="circle" style="--pct:60%;">60%</div>
+      <h3>Data Science</h3>
+      <a class="btn">View Details</a>
+    </div>
+
+    <div class="card" onclick="openModal('Cybersecurity', 4, 10)">
+      <div class="circle" style="--pct:40%;">40%</div>
+      <h3>Cybersecurity</h3>
+      <a class="btn">View Details</a>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="courseModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p><strong>Description:</strong> <span id="modalDesc"></span></p>
+      <p><strong>Learning Outcomes:</strong></p>
+      <ul id="modalLearn"></ul>
+      <p><strong>Modules Completed:</strong> <span id="modulesDone"></span></p>
+      <p><strong>Modules Pending:</strong> <span id="modulesPending"></span></p>
+      <p class="price">Price: ₹<span id="modalPrice"></span></p>
+    </div>
+  </div>
+
+  <script>
+    const data = {
+      'Web Development': {
+        desc: 'Build responsive sites using HTML, CSS & JavaScript.',
+        learn: ['HTML/CSS','JavaScript','Node.js','React','APIs','Hosting','Version Control','Testing'],
+        price: '2999'
+      },
+      'Data Science': {
+        desc: 'Analyze data and build ML models with Python.',
+        learn: ['Python','Pandas','Statistics','ML','Visualization','NLP','Deep Learning','Deployment'],
+        price: '3499'
+      },
+      'Cybersecurity': {
+        desc: 'Protect networks and systems via ethical hacking.',
+        learn: ['Network Security','Pen Testing','Cryptography','Forensics','SOC','Policies','Incident Response','SIEM'],
+        price: '3199'
+      }
+    };
+
+    function openModal(course, done, total) {
+      const info = data[course];
+      document.getElementById('modalTitle').innerText = course;
+      document.getElementById('modalDesc').innerText = info.desc;
+      document.getElementById('modalPrice').innerText = info.price;
+      document.getElementById('modulesDone').innerText = done;
+      document.getElementById('modulesPending').innerText = total - done;
+      const ul = document.getElementById('modalLearn');
+      ul.innerHTML = '';
+      info.learn.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = '🎯 ' + item;
+        ul.appendChild(li);
+      });
+      document.getElementById('courseModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('courseModal').style.display = 'none';
+    }
+
+    window.onclick = e => {
+      if (e.target === document.getElementById('courseModal')) closeModal();
+    };
+  </script>
+
+  
+</body>
+</html>
