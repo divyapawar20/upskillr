@@ -65,27 +65,21 @@ Node.js v18+
 
 MongoDB (local or Atlas)
 
-Git (optional)
+Git (.........)
 
 🧪 Steps
 bash
 Copy
 Edit
 # Clone the repo
-git clone https://github.com/divyapawar20/upskillr.git
-cd upskillr
 
 # Install dependencies
 npm install
 
-# Set up environment variables
-touch config.env
-Add the following in config.env:
 
-env
-Copy
+env file............................
 Edit
-MONGO_URI=your_mongodb_connection_string
+MONGO_URI=your_mongodb_example_string...........
 PORT=3000
 ▶️ Run the Server
 bash
